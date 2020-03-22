@@ -1,0 +1,54 @@
+ directive:
+ a directive is a function that executes whenever the Angular compiler finds it in the DOM.
+directive can be used in element, attribute, class or comment.
+
+2 types: 
+1.predefined- ng-repeat
+2.custom-called anything
+
+
+Components
+As we saw earlier, components are just directives with templates. Under the hood, they use the directive API and give us a cleaner way to define them.The other two directive types don’t have templates. Instead, they’re specifically tailored to DOM manipulation
+
+Attribute directives
+Attribute directives manipulate the DOM by changing its behavior and appearance.
+We use attribute directives to apply conditional style to elements, show or hide elements or dynamically change the behavior of a component according to a changing property.
+
+
+Structural directives
+These are specifically tailored to create and destroy DOM elements.
+Some attribute directives — like hidden, which shows or hides an element — basically maintain the DOM as it is. But the structural Angular directives are much less DOM friendly, as they add or completely remove elements from the DOM. So, when using these, we have to be extra careful, since we’re actually changing the HTML structure.
+
+
+USING directive
+The ngClass directive is a good example of an existing Angular attribute directive:
+
+ngClass directive
+
+  <p [ngClass]="{'blue':true==true}">
+    Angular Directives Are Cool!
+</p>
+
+
+ngIf directive
+In this example, we use the ngIf directive to add or remove the text using a button.
+<div *ngIf="true">Text to show</div>
+
+
+Creating an attribute directive
+
+Creating a directive is similar to creating a component.    
+But in this case, we use the @Directive decorator.
+ For our example, we’ll be creating a directive called “my-error-directive”,
+  which will highlight in red the background of an element to indicate an error.
+
+import {Directive, ElementRef} from '@angular/core';
+@Directive({
+  selector:'[my-error]'
+})
+ constructor(elr:ElementRef){
+    elr.nativeElement.style.background='red';
+}
+ 
+
+ selector- gives a name to the directive.

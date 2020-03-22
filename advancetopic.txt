@@ -1,0 +1,3 @@
+If you inject ViewContainerRef the element is the host element of TestDirective. If you use @ViewChild(templateVarNameOrType) or @ContentChild(templateVarNameOrType) it's the element where templateVarNameOrType matches.
+
+You should be aware that this.viewContainer.createEmbeddedView() or this.viewContainer.createComponent() creates the element or component as sibling of the element ViewContainerRef points to, not as many expect as child.
